@@ -17,7 +17,6 @@ public class Employee {
     @Column(name = "PPA_ID")
     private String ppaId;
 
-    @Id
     @Column(name = "NIN")
     private Long nin;
 

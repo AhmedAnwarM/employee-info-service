@@ -87,11 +87,6 @@
             <artifactId>ojdbc8</artifactId>
             <version>19.3.0.0</version>
         </dependency>
-        <dependency>
-            <groupId>sa.gov.pension</groupId>
-            <artifactId>common-util</artifactId>
-            <version>1.0.0</version>
-        </dependency>
 
         <dependency>
             <groupId>io.quarkus</groupId>

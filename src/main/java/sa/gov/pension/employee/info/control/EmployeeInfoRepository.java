@@ -1,6 +1,7 @@
 package sa.gov.pension.employee.info.control;
 
 import sa.gov.pension.employee.info.entity.Employee;
+import sa.gov.pension.employee.info.entity.exceptions.NinNotFoundException;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -15,7 +16,10 @@ public class EmployeeInfoRepository {
     @Inject
     EntityManager em;
 
-    public Long getEmployeeNin(String ppaId) {
-        return em.find(Employee.class, ppaId).getNin();
+    public Long getEmployeeNin(String ppaId) throws NinNotFoundException {
+        Employee employee = em.find(Employee.class, ppaId);
+        if (employee == null || employee.getNin() == null)
+            throw new NinNotFoundException(ppaId);
+        return employee.getNin();
     }
 }
