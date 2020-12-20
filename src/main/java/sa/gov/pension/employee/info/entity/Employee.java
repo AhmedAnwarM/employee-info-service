@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -11,7 +12,8 @@ import java.util.Objects;
  */
 @Entity
 @Table(schema = "CG_PROFILE", name = "PPA_EMPLOYEES")
-public class Employee {
+public class Employee implements Serializable {
+    private static final long serialVersionUID = -2061604832116969063L;
 
     @Id
     @Column(name = "PPA_ID")
