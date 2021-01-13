@@ -26,18 +26,8 @@ public class EmployeeInfoResources {
     @GET
     @Path("/nin/{ppaId}")
     @Produces(TEXT_PLAIN)
-    public Response getEmployeeNin(@PathParam("ppaId") String ppaId) {
-        try {
-            return Response.ok(repo.getEmployeeNin(ppaId)).
-                    build();
-        } catch (NinNotFoundException e) {
-            return Response.status(BAD_REQUEST).
-                    entity(e.getMessage()).
-                    build();
-        } catch (Exception e) {
-            return Response.status(INTERNAL_SERVER_ERROR).
-                    entity(e.getMessage()).
-                    build();
-        }
+    public Response getEmployeeNin(@PathParam("ppaId") String ppaId) throws Exception {
+        return Response.ok(repo.getEmployeeNin(ppaId)).
+                build();
     }
 }

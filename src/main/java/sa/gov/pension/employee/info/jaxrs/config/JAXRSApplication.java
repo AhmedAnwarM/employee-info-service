@@ -1,4 +1,4 @@
-package sa.gov.pension.employee.info;
+package sa.gov.pension.employee.info.jaxrs.config;
 
 import org.eclipse.microprofile.openapi.annotations.OpenAPIDefinition;
 import org.eclipse.microprofile.openapi.annotations.info.Contact;
