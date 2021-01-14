@@ -1,4 +1,4 @@
-package sa.gov.pension.employee.info.jaxrs.config;
+package sa.gov.pension.employee.info.config.mapper;
 
 import sa.gov.pension.employee.info.entity.exceptions.NinNotFoundException;
 

@@ -1,4 +1,4 @@
-package sa.gov.pension.employee.info.jaxrs.config;
+package sa.gov.pension.employee.info.config.mapper;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;

@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>sa.gov.pension</groupId>
     <artifactId>employee-info-service</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 
-     <properties>
+    <properties>
         <compiler-plugin.version>3.8.1</compiler-plugin.version>
         <maven.compiler.parameters>true</maven.compiler.parameters>
         <maven.compiler.source>8</maven.compiler.source>
@@ -94,6 +94,11 @@
             <groupId>com.oracle.ojdbc</groupId>
             <artifactId>ojdbc8</artifactId>
             <version>19.3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>sa.gov.pension</groupId>
+            <artifactId>common-util</artifactId>
+            <version>1.1.0</version>
         </dependency>
 
         <dependency>
