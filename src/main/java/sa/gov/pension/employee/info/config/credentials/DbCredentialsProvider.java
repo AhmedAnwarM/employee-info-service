@@ -18,7 +18,7 @@ import static sa.gov.pension.profile.logging.ProfileLogger.getStackInfo;
 @Named("profile-db-credentials-provider")
 public class DbCredentialsProvider implements CredentialsProvider {
     private static final Logger LOGGER = Logger.getLogger(DbCredentialsProvider.class.getName());
-    public static final String SECRET_PATH = "profile/db/credentials";
+    private static final String SECRET_PATH = "profile/db/credentials";
 
     @Inject
     VaultKVSecretEngine vault;
