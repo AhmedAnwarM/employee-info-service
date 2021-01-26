@@ -87,6 +87,10 @@
             <artifactId>quarkus-agroal</artifactId>
         </dependency>
         <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-vault</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
         </dependency>
@@ -175,8 +179,6 @@
             </activation>
             <properties>
                 <profile-db-url>jdbc:oracle:thin:@//test-scan1:1521/cvpe_db</profile-db-url>
-                <profile-db-user>CG_profile</profile-db-user>
-                <profile-db-pass>CG_profile_1</profile-db-pass>
                 <swagger-ui-include>true</swagger-ui-include>
             </properties>
         </profile>
@@ -185,8 +187,6 @@
             <id>prod</id>
             <properties>
                 <profile-db-url>jdbc:oracle:thin:@//idm-scan1:1521/profile_srv</profile-db-url>
-                <profile-db-user>CG_PROFILE</profile-db-user>
-                <profile-db-pass>Profile_usr_1</profile-db-pass>
                 <swagger-ui-include>false</swagger-ui-include>
             </properties>
         </profile>
