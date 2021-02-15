@@ -1,10 +1,10 @@
-name: Quarkus Codestart CI
+name: Maven Build + SonarQube CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, dev ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, dev ]
 
 jobs:
   build:
