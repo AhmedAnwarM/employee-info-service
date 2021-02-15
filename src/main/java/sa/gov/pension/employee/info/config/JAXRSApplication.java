@@ -13,14 +13,8 @@ import javax.ws.rs.core.Application;
  */
 @ApplicationPath("/api")
 @OpenAPIDefinition(
-        info = @Info(
-                title = "PPA Employee Information API",
-                version = "1.0.0",
-                contact = @Contact(
-                        name = "Ahmed Anwar",
-                        email = "mailto:9785@pension.gov.sa"),
-                license = @License(
-                        name = "Apache 2.0",
-                        url = "http://www.apache.org/licenses/LICENSE-2.0.html")))
+        info = @Info(title = "PPA Employee Information API", version = "1.0.0",
+					 contact = @Contact(name = "Ahmed Anwar", email = "9785@pension.gov.sa"),
+					 license = @License(name = "Apache 2.0", url = "http://www.apache.org/licenses/LICENSE-2.0.html")))
 public class JAXRSApplication extends Application {
 }

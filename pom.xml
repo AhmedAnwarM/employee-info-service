@@ -3,9 +3,9 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>sa.gov.pension</groupId>
     <artifactId>employee-info-service</artifactId>
-    <version>1.2.0</version>
+    <groupId>sa.gov.pension</groupId>
+    <version>1.2.2</version>
 
     <properties>
         <compiler-plugin.version>3.8.1</compiler-plugin.version>
@@ -19,6 +19,9 @@
         <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
         <quarkus.platform.version>1.9.2.Final</quarkus.platform.version>
         <surefire-plugin.version>2.22.1</surefire-plugin.version>
+        <sonar.projectKey>AhmedAnwarM_employee-info-service</sonar.projectKey>
+        <sonar.organization>ahmedanwarm</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
     <dependencyManagement>
@@ -91,6 +94,10 @@
             <artifactId>quarkus-vault</artifactId>
         </dependency>
         <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-infinispan-client</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
         </dependency>
@@ -102,34 +109,7 @@
         <dependency>
             <groupId>sa.gov.pension</groupId>
             <artifactId>common-util</artifactId>
-            <version>1.2.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-test-h2</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.193</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-junit5</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-junit5-mockito</artifactId>
-            <scope>test</scope>
+            <version>1.2.1</version>
         </dependency>
     </dependencies>
     <build>
@@ -171,24 +151,4 @@
             </plugin>
         </plugins>
     </build>
-    <profiles>
-        <profile>
-            <id>dev</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <profile-db-url>jdbc:oracle:thin:@//test-scan1:1521/cvpe_db</profile-db-url>
-                <swagger-ui-include>true</swagger-ui-include>
-            </properties>
-        </profile>
-
-        <profile>
-            <id>prod</id>
-            <properties>
-                <profile-db-url>jdbc:oracle:thin:@//idm-scan1:1521/profile_srv</profile-db-url>
-                <swagger-ui-include>false</swagger-ui-include>
-            </properties>
-        </profile>
-    </profiles>
 </project>

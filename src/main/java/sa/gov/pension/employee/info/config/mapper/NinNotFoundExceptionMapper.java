@@ -1,6 +1,6 @@
 package sa.gov.pension.employee.info.config.mapper;
 
-import sa.gov.pension.employee.info.entity.exceptions.NinNotFoundException;
+import sa.gov.pension.employee.info.inquiry.entity.exceptions.NinNotFoundException;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
@@ -14,8 +14,7 @@ public class NinNotFoundExceptionMapper implements ExceptionMapper<NinNotFoundEx
     @Override
     public Response toResponse(NinNotFoundException exception) {
         return Response.status(BAD_REQUEST).
-                entity("{\"errorMessage\": \"" + exception.getPpaId() + "\","
-                        + "\"status\": \"Error: No NIN found for given ppa ID\"}").
-                build();
+                entity("{\"errorMessage\": \"" + exception.getPpaId() + "\"," + "\"status\": \"Error: No NIN found for given ppa ID\"}").
+                               build();
     }
 }
