@@ -38,7 +38,7 @@ public class RestLoggerFilter implements ContainerResponseFilter, ContainerReque
     public void filter(ContainerRequestContext requestContext) {
         String globalTransId = requestContext.getHeaderString(GLOB_TRANS_ID);
         String requestId = requestContext.getHeaderString(REQUEST_ID);
-        if (globalTransId == null) {
+        if (globalTransId == null || globalTransId.isEmpty()) {
             EventCorrelationType corr = ServiceInfoThreadLocal.getCorrelationInfo();
             globalTransId = corr.getGlobalTransactionId();
             requestId = corr.getLocalTransactionId();
