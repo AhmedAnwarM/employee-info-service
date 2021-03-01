@@ -15,7 +15,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
-import java.io.IOException;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.Status.NOT_FOUND;
@@ -27,6 +26,8 @@ import static sa.gov.pension.profile.logging.LoggingUtil.getHostName;
 @Path("/support")
 @Produces(APPLICATION_JSON)
 public class SupportResources {
+    public static final String SECRET_HEADER_KEY = "X-REQUESTER";
+    public static final String SECRET_HEADER_VALUE = "secret-requester";
 
     @Inject
     CacheController cache;
@@ -34,7 +35,7 @@ public class SupportResources {
     @DELETE
     @Path("/cache")
     @Operation(hidden = true)
-    public Response clearCache() throws IOException {
+    public Response clearCache() {
         cache.clear();
         LoggingConfigUtil.clearCache();
         return Response.ok(new ClearCacheResponse(getHostName())).
@@ -45,7 +46,7 @@ public class SupportResources {
     @Path("/config/{key}")
     @Operation(hidden = true)
     public Response getConfigValue(@PathParam("key") String key, @Context HttpHeaders headers) {
-        if ("secret-requester".equals(headers.getHeaderString("X-REQUESTER")))
+        if (SECRET_HEADER_VALUE.equals(headers.getHeaderString(SECRET_HEADER_KEY)))
             return Response.ok(ConfigProvider.getConfig().getValue(key, String.class)).
                     build();
         else
@@ -56,7 +57,7 @@ public class SupportResources {
     @Path("/cache")
     @Operation(hidden = true)
     public Response getCacheValues(@Context HttpHeaders headers) {
-        if ("secret-requester".equals(headers.getHeaderString("X-REQUESTER")))
+        if (SECRET_HEADER_VALUE.equals(headers.getHeaderString(SECRET_HEADER_KEY)))
             return Response.ok(cache.getCacheValues()).
                     build();
         else
@@ -67,7 +68,7 @@ public class SupportResources {
     @Path("/cache/{key}")
     @Operation(hidden = true)
     public Response getCacheValue(@PathParam("key") String key, @Context HttpHeaders headers) {
-        if ("secret-requester".equals(headers.getHeaderString("X-REQUESTER")))
+        if (SECRET_HEADER_VALUE.equals(headers.getHeaderString(SECRET_HEADER_KEY)))
             return Response.ok(cache.getCacheValue(key)).
                     build();
         else

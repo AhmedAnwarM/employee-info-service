@@ -6,10 +6,11 @@ package sa.gov.pension.employee.info.inquiry.entity.exceptions;
 public class NinNotFoundException extends Exception {
 
     private static final long serialVersionUID = 4451114629357272861L;
-    private String ppaId;
+    private final String ppaId;
 
     public NinNotFoundException() {
         super("No NIN was found");
+        ppaId = null;
     }
 
     public NinNotFoundException(String ppaId) {
@@ -19,6 +20,7 @@ public class NinNotFoundException extends Exception {
 
     public NinNotFoundException(String ppaId, Exception e) {
         super("No NIN was found for PPA ID: " + ppaId, e);
+        this.ppaId = ppaId;
     }
 
     public String getPpaId() {

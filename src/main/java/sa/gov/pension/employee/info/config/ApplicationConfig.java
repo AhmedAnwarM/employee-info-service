@@ -25,7 +25,7 @@ public class ApplicationConfig {
     @PostConstruct
     public void init() {
         LOGGER.logInfoMessage("Initializing " + EMP_INFO_LOGGER_NAME + " app", getStackInfo());
-        ServiceInfoThreadLocal.APP_NAME = EMP_INFO_LOGGER_NAME;
+        ServiceInfoThreadLocal.setAppName(EMP_INFO_LOGGER_NAME);
     }
 
     @PreDestroy

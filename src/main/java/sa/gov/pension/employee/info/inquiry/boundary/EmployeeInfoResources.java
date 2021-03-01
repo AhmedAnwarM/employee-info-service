@@ -1,6 +1,7 @@
 package sa.gov.pension.employee.info.inquiry.boundary;
 
 import sa.gov.pension.employee.info.inquiry.control.EmployeeInfoRepository;
+import sa.gov.pension.employee.info.inquiry.entity.exceptions.NinNotFoundException;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -23,7 +24,7 @@ public class EmployeeInfoResources {
     @GET
     @Path("/nin/{ppaId}")
     @Produces(APPLICATION_JSON)
-    public Response getEmployeeNin(@PathParam("ppaId") String ppaId) throws Exception {
+    public Response getEmployeeNin(@PathParam("ppaId") String ppaId) throws NinNotFoundException {
         return Response.ok(repo.getEmployeeNin(ppaId)).
                 build();
     }
