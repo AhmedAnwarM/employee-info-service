@@ -15,7 +15,9 @@ import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 
 import static sa.gov.pension.profile.logging.LoggingUtil.GLOB_TRANS_ID;
+import static sa.gov.pension.profile.logging.LoggingUtil.NODE_NAME;
 import static sa.gov.pension.profile.logging.LoggingUtil.REQUEST_ID;
+import static sa.gov.pension.profile.logging.LoggingUtil.getHostName;
 import static sa.gov.pension.profile.logging.ProfileLogger.getStackInfo;
 import static sa.gov.pension.profile.logging.config.LoggingConfigKeys.EMP_INFO_LOGGER_NAME;
 import static sa.gov.pension.profile.logging.config.LoggingConfigUtil.dbLoggingEnabled;
@@ -59,6 +61,7 @@ public class RestLoggerFilter implements ContainerResponseFilter, ContainerReque
         EventCorrelationType correlationInfo = ServiceInfoThreadLocal.getCorrelationInfo();
         responseContext.getHeaders().putSingle(REQUEST_ID, correlationInfo.getLocalTransactionId());
         responseContext.getHeaders().putSingle(GLOB_TRANS_ID, correlationInfo.getGlobalTransactionId());
+        responseContext.getHeaders().putSingle(NODE_NAME, getHostName());
         LOGGER.logDebugMessage(
                 "Return from REST Service: \n" + requestContext.getMethod() + "\t" + requestContext.getUriInfo().getRequestUri().toString()
                         + "\n" + MAPPER.writeValueAsString(responseContext.getEntity()), getStackInfo(), dbLoggingEnabled());
